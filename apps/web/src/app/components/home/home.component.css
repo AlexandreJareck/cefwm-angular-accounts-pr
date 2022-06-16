@@ -1,0 +1,11 @@
+::ng-deep
+  .p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem:not(.p-highlight):not(.p-disabled):hover
+  .p-menuitem-link-active,
+::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link-active {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
