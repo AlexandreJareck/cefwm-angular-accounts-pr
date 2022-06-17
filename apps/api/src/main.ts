@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { MongoClient } from 'mongodb';
 import { router as accountsRoute } from './app/routes/accounts';
+import * as cors from 'cors';
 
 MongoClient.connect('mongodb://accounts-pr_devcontainer_db_1')
   .then((client: MongoClient) => {
@@ -12,6 +13,7 @@ MongoClient.connect('mongodb://accounts-pr_devcontainer_db_1')
   });
 
 const app = express();
+app.use(cors());
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });

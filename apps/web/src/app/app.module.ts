@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,7 +10,7 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, MyAccountComponent],
-  imports: [BrowserModule, AppRoutingModule, TabMenuModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, TabMenuModule],
   providers: [],
   bootstrap: [AppComponent],
 })
