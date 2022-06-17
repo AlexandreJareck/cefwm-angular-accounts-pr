@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Account as IAccount } from '@cefwm-angular/common';
-import { Observable, Subject } from 'rxjs';
 import { AccountService } from '../../services/account.service';
+import { Summary } from '../../models/summary';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'cefwm-angular-my-account',
@@ -11,10 +12,7 @@ import { AccountService } from '../../services/account.service';
 })
 export class MyAccountComponent implements OnInit, OnDestroy {
   public accounts: IAccount[] = [];
-
-  public total: number = 0;
-  public payable: number = 0;
-  public receivable: number = 0;
+  public summary: Summary = {} as Summary;
 
   private subDestruction: Subject<void> = new Subject();
 
@@ -31,8 +29,26 @@ export class MyAccountComponent implements OnInit, OnDestroy {
   }
 
   getMyAccounts(): void {
-    this.accountService.getAll().subscribe((account) => {
-      this.accounts = account;
+    this.accountService.getAll().subscribe((accounts) => {
+      this.accounts = accounts;
+
+      this.summary = this.accounts.reduce(
+        (acc, transaction) => {
+          if (transaction.type === 'deposit') {
+            acc.payable += transaction.amount;
+            acc.total += transaction.amount;
+          } else {
+            acc.receivable += transaction.amount;
+            acc.total -= transaction.amount;
+          }
+          return acc;
+        },
+        {
+          payable: 0,
+          receivable: 0,
+          total: 0,
+        }
+      );
     });
   }
 }

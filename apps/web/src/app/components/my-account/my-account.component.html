@@ -18,21 +18,21 @@
         <p>Valor a receber</p>
         <img src="../../../assets/income.svg" alt="Valor a receber" />
       </header>
-      <strong>{{1000 | currency:'BRL'}}</strong>
+      <strong>{{summary.payable | currency:'BRL'}}</strong>
     </div>
     <div class="content">
       <header class="top">
         <p>Valor a pagar</p>
         <img src="../../../assets/outcome.svg" alt="Valor a pagar" />
       </header>
-      <strong>-{{100 | currency: 'BRL'}}</strong>
+      <strong>-{{summary.receivable | currency: 'BRL'}}</strong>
     </div>
     <div class="content highlight-background">
       <header class="top">
         <p>Total</p>
         <img src="../../../assets/total.svg" alt="Total" />
       </header>
-      <strong>{{total | currency: 'BRL'}}</strong>
+      <strong>{{summary.total | currency: 'BRL'}}</strong>
     </div>
   </div>
   <!-- Fim SummaryComponent -->
