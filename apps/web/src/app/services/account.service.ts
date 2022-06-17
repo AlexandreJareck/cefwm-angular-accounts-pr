@@ -14,8 +14,8 @@ export class AccountService {
     return this.httpClient
       .get<IAccount[]>('http://localhost:3333/api/accounts')
       .pipe(
-        tap((xyz) => {
-          console.log(xyz);
+        tap((accounts) => {
+          return accounts
         })
       );
   }

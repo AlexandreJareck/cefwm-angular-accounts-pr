@@ -15,24 +15,24 @@
   <div class="summary">
     <div class="content">
       <header class="top">
-        <p>Entradas</p>
-        <img src="../../../assets/income.svg" alt="Entradas" />
+        <p>Valor a receber</p>
+        <img src="../../../assets/income.svg" alt="Valor a receber" />
       </header>
-      <strong>1100</strong>
+      <strong>{{1000 | currency:'BRL'}}</strong>
     </div>
     <div class="content">
       <header class="top">
-        <p>Saídas</p>
-        <img src="../../../assets/outcome.svg" alt="Saidas" />
+        <p>Valor a pagar</p>
+        <img src="../../../assets/outcome.svg" alt="Valor a pagar" />
       </header>
-      <strong>-100</strong>
+      <strong>-{{100 | currency: 'BRL'}}</strong>
     </div>
     <div class="content highlight-background">
       <header class="top">
         <p>Total</p>
         <img src="../../../assets/total.svg" alt="Total" />
       </header>
-      <strong>1000</strong>
+      <strong>{{total | currency: 'BRL'}}</strong>
     </div>
   </div>
   <!-- Fim SummaryComponent -->
@@ -49,15 +49,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Título</td>
-          <td>Valor</td>
-          <td>Categoria</td>
-          <td>Data</td>
+        <tr *ngFor="let account of accounts">
+          <td>{{account.title}}</td>
+          <td [className]="account.type">{{account.amount | currency:'BRL'}}</td>
+          <td>{{account.category}}</td>
+          <td>{{account.createdAt}}</td>
         </tr>
       </tbody>
     </table>
   </div>
-
   <!-- Fim MyAccountComponent -->
+
 </div>
