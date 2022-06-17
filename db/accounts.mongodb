@@ -1,0 +1,38 @@
+use('app-accounts');
+
+db.accounts.drop();
+
+db.accounts.insertMany([
+  {
+    '_id': 1,
+    'title': 'Transaction 1',
+    'amount': 1000,
+    'category': 'work',
+    'type': 'deposit',
+    'createdAt': '16/06/2022 22:00'
+  },
+  {
+    '_id': 2,
+    'title': 'Transaction 2',
+    'amount': 100,
+    'category': 'food',
+    'type': 'withdraw',
+    'createdAt': '15/06/2022 20:00'
+  },
+  {
+    '_id': 3,
+    'title': 'Transaction 3',
+    'amount': 300,
+    'category': 'basics',
+    'type': 'withdraw',
+    'createdAt': '14/06/2022 20:00'
+  },
+  {
+    '_id': 4,
+    'title': 'Transaction 4',
+    'amount': 150,
+    'category': 'work',
+    'type': 'withdraw',
+    'createdAt': '10/06/2022 10:00'
+  }
+])
