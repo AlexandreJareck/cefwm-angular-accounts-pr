@@ -9,11 +9,12 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { CalculatePipe } from './pipes/calculate.pipe';
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, MyAccountComponent],
+  declarations: [AppComponent, HomeComponent, MyAccountComponent, CalculatePipe],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, TabMenuModule],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],

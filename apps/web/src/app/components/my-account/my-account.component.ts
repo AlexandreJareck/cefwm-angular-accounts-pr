@@ -2,7 +2,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Account as IAccount } from '@cefwm-angular/common';
 import { AccountService } from '../../services/account.service';
-import { Summary } from '../../models/summary';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -12,7 +11,6 @@ import { Subject } from 'rxjs';
 })
 export class MyAccountComponent implements OnInit, OnDestroy {
   public accounts: IAccount[] = [];
-  public summary: Summary = {} as Summary;
 
   private subDestruction: Subject<void> = new Subject();
 
@@ -20,7 +18,6 @@ export class MyAccountComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getMyAccounts();
-    // console.log('chamadou aqui', this.accounts);
   }
 
   ngOnDestroy(): void {
@@ -31,24 +28,6 @@ export class MyAccountComponent implements OnInit, OnDestroy {
   getMyAccounts(): void {
     this.accountService.getAll().subscribe((accounts) => {
       this.accounts = accounts;
-
-      this.summary = this.accounts.reduce(
-        (acc, transaction) => {
-          if (transaction.type === 'deposit') {
-            acc.payable += transaction.amount;
-            acc.total += transaction.amount;
-          } else {
-            acc.receivable += transaction.amount;
-            acc.total -= transaction.amount;
-          }
-          return acc;
-        },
-        {
-          payable: 0,
-          receivable: 0,
-          total: 0,
-        }
-      );
     });
   }
 }

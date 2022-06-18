@@ -1,7 +1,7 @@
 export class Summary {
   constructor(
-    public total: number = 0,
-    public payable: number = 0,
-    public receivable: number = 0
+    public total: number,
+    public payable: number,
+    public receivable: number
   ) {}
 }
