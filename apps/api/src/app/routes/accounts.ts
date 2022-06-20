@@ -9,7 +9,9 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     req.app,
     'accounts'
   )
-    .find()
+    .find({
+      userId: 2,
+    })
     .toArray();
   res.json(accounts);
 });
@@ -20,6 +22,16 @@ router.get('/:_id', async (req: Request, res: Response, next: NextFunction) => {
     _id: _id,
   })) as IAccount;
   res.json(account);
+});
+
+router.post('', async (req: Request, res: Response, next: NextFunction) => {
+  const body: IAccount = req.body;
+
+  const results = await getCollection<IAccount>(req.app, 'accounts').insertOne(
+    body
+  );
+
+  res.json(results);
 });
 
 // router.put('/:_id', async (req: Request, res: Response, next: NextFunction) => {

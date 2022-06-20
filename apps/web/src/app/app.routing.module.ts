@@ -22,6 +22,13 @@ const routes: Routes = [
         path: 'my-accounts',
         component: MyAccountComponent,
       },
+      {
+        path: 'new-account',
+        loadChildren: () =>
+          import('./modules/new-account/new-account.module').then(
+            (mod) => mod.NewAccountModule
+          ),
+      },
     ],
   },
   {

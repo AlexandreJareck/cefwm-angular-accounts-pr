@@ -1,0 +1,17 @@
+<form class="container" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+  <h2>Cadastrar Transação</h2>
+  <input type="text" placeholder="Título" formControlName="title">
+  <input type="number" placeholder="Valor" formControlName="amount">
+  <div class="radio-box-container">
+    <button type="button">
+      <img src="../../../../../assets/income.svg" alt="Valor a receber" />
+      <span>A Receber</span>
+    </button>
+    <button type="button">
+      <img src="../../../../../assets/outcome.svg" alt="Valor a pagar" />
+      <span>A Pagar</span>
+    </button>
+  </div>
+  <input type="text" placeholder="Categoria" formControlName="category">
+  <button type="submit">Cadastrar</button>
+</form>

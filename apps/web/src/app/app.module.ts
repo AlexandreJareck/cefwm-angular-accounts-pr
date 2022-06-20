@@ -14,7 +14,12 @@ import { CalculatePipe } from './pipes/calculate.pipe';
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, MyAccountComponent, CalculatePipe],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    MyAccountComponent,
+    CalculatePipe,
+  ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, TabMenuModule],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],

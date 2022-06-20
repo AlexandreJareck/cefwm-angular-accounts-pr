@@ -9,7 +9,8 @@ db.accounts.insertMany([
     'amount': 1000,
     'category': 'work',
     'type': 'deposit',
-    'createdAt': '16/06/2022 22:00'
+    'createdAt': '16/06/2022 22:00',
+    'userId': 2
   },
   {
     '_id': 2,
@@ -17,7 +18,8 @@ db.accounts.insertMany([
     'amount': 100,
     'category': 'food',
     'type': 'withdraw',
-    'createdAt': '15/06/2022 20:00'
+    'createdAt': '15/06/2022 20:00',
+    'userId': 2
   },
   {
     '_id': 3,
@@ -25,7 +27,8 @@ db.accounts.insertMany([
     'amount': 300,
     'category': 'basics',
     'type': 'withdraw',
-    'createdAt': '14/06/2022 20:00'
+    'createdAt': '14/06/2022 20:00',
+    'userId': 1
   },
   {
     '_id': 4,
@@ -33,6 +36,7 @@ db.accounts.insertMany([
     'amount': 150,
     'category': 'work',
     'type': 'withdraw',
-    'createdAt': '10/06/2022 10:00'
+    'createdAt': '10/06/2022 10:00',
+    'userId': 2
   }
 ])

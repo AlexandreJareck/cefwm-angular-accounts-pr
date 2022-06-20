@@ -15,8 +15,16 @@ export class AccountService {
       .get<IAccount[]>('http://localhost:3333/api/accounts')
       .pipe(
         tap((accounts) => {
-          return accounts
+          return accounts;
         })
       );
+  }
+
+  // transferir para o servicer newaccountservice (criar o servico)
+  public post(account: IAccount): Observable<string> {
+    return this.httpClient.post<string>(
+      `http://localhost:3333/api/accounts`,
+      account
+    );
   }
 }
