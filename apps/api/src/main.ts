@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { MongoClient } from 'mongodb';
 import { router as accountsRoute } from './app/routes/accounts';
+import { router as authRoute } from './app/routes/auth';
 import * as cors from 'cors';
 import { json } from 'body-parser';
 
@@ -21,6 +22,8 @@ app.use(json());
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
 });
+
+app.use('/api/auth', authRoute);
 
 app.use('/api/accounts', accountsRoute);
 

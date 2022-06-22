@@ -1,0 +1,18 @@
+use('app-accounts');
+
+db.users.drop();
+
+db.users.insertMany([
+  {
+    '_id': 1,
+    'username': 'alexandre',
+    'password': '123456',
+    'admin': false,
+  },
+  {
+    '_id': 2,
+    'username': 'admin',
+    'password': 'admin',
+    'admin': true
+  },
+])
