@@ -3,11 +3,13 @@
   <input type="text" placeholder="Título" formControlName="title">
   <input type="number" placeholder="Valor" formControlName="amount">
   <div class="radio-box-container">
-    <button type="button">
+    <button type="button" (click)="setType('deposit')"
+      [className]="'radio-box ' + (type.value === 'deposit' ? 'active-green' : '')">
       <img src="../../../../../assets/income.svg" alt="Valor a receber" />
       <span>A Receber</span>
     </button>
-    <button type="button">
+    <button type="button" (click)="setType('withdraw')"
+      [className]="'radio-box ' + (type.value === 'withdraw' ? 'active-red' : '')">
       <img src="../../../../../assets/outcome.svg" alt="Valor a pagar" />
       <span>A Pagar</span>
     </button>

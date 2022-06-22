@@ -85,12 +85,12 @@ button.radio-box {
   gap: 0.5rem;
 }
 
-button.active-green {
+.active-green {
   background: rgba(51, 204, 149, 0.1);
   filter: brightness(85%);
 }
 
-button.active-red {
+.active-red {
   background: rgba(229, 46, 77, 0.1);
   filter: brightness(85%);
 }

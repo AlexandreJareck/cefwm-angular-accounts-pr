@@ -24,27 +24,11 @@ router.get('/:_id', async (req: Request, res: Response, next: NextFunction) => {
   res.json(account);
 });
 
-router.post('', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   const body: IAccount = req.body;
-
   const results = await getCollection<IAccount>(req.app, 'accounts').insertOne(
     body
   );
 
   res.json(results);
 });
-
-// router.put('/:_id', async (req: Request, res: Response, next: NextFunction) => {
-//   const _id: number = +req.params._id;
-//   const body: IAccount = req.body;
-//   const results = await getCollection<IAccount>(
-//     req.app,
-//     'accounts'
-//   ).findOneAndReplace(
-//     {
-//       _id: _id,
-//     },
-//     body
-//   );
-//   res.json(results);
-// });
