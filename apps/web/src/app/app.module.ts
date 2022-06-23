@@ -33,11 +33,11 @@ registerLocaleData(localePt, 'pt-BR');
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AuthModule,
     AppRoutingModule,
     TabMenuModule,
     ToastModule,
     MessageModule,
-    AuthModule,
   ],
   providers: [
     MessageService,
