@@ -1,15 +1,23 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
+import { AppErrorHandler } from './app-error-handler';
+
 import { HomeComponent } from './components/home/home.component';
-import { TabMenuModule } from 'primeng/tabmenu';
 import { MyAccountComponent } from './components/my-account/my-account.component';
-import localePt from '@angular/common/locales/pt';
-import { registerLocaleData } from '@angular/common';
+
 import { CalculatePipe } from './pipes/calculate.pipe';
+
+import { ToastModule } from 'primeng/toast';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { MessageModule } from 'primeng/message';
+import { MessageService } from 'primeng/api';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -20,8 +28,23 @@ registerLocaleData(localePt, 'pt-BR');
     MyAccountComponent,
     CalculatePipe,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, TabMenuModule],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    TabMenuModule,
+    ToastModule,
+    MessageModule,
+  ],
+  providers: [
+    MessageService,
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    {
+      provide: ErrorHandler,
+      useClass: AppErrorHandler,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
