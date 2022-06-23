@@ -22,6 +22,8 @@
     "@nrwl/angular": "12.8.0",
     "cors": "^2.8.5",
     "express": "4.17.1",
+    "express-jwt": "^6.1.2",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.7.0",
     "primeicons": "^4.1.0",
     "primeng": "^12.2.3",
