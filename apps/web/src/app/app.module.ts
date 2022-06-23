@@ -18,6 +18,7 @@ import { ToastModule } from 'primeng/toast';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { MessageModule } from 'primeng/message';
 import { MessageService } from 'primeng/api';
+import { AuthModule } from './modules/auth/auth.module';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -36,6 +37,7 @@ registerLocaleData(localePt, 'pt-BR');
     TabMenuModule,
     ToastModule,
     MessageModule,
+    AuthModule,
   ],
   providers: [
     MessageService,
