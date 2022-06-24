@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
@@ -19,6 +19,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { MessageModule } from 'primeng/message';
 import { MessageService } from 'primeng/api';
 import { AuthModule } from './modules/auth/auth.module';
+import { JwtInterceptor } from './jwt.interceptor';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -45,6 +46,11 @@ registerLocaleData(localePt, 'pt-BR');
     {
       provide: ErrorHandler,
       useClass: AppErrorHandler,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],
