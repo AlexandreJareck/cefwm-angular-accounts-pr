@@ -10,8 +10,8 @@ import { Account as IAccount } from '@cefwm-angular/common';
 export class AccountService {
   constructor(private httpClient: HttpClient) {}
 
-  public getAll(): Observable<IAccount[]> {
-    return this.httpClient.get<IAccount[]>('/api/accounts').pipe(
+  public getAll(userId: number): Observable<IAccount[]> {
+    return this.httpClient.get<IAccount[]>(`/api/accounts/${userId}`).pipe(
       tap((accounts) => {
         return accounts;
       })

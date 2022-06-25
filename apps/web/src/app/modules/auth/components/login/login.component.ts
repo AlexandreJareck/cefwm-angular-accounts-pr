@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
           return of(undefined);
         })
       )
-      .subscribe((resultado: { token: string } | undefined) => {
+      .subscribe((resultado: { token: string; _id: number } | undefined) => {
         if (!resultado) {
           this.messageService.add({
             severity: 'error',
@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
           });
           this.router.navigate(['/']);
           localStorage.setItem('token', resultado.token);
+          localStorage.setItem('userId', resultado._id.toString());
         }
       });
   }

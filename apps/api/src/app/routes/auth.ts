@@ -18,7 +18,7 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
     res.json({
       ...result,
       token: jsonWebToken.sign(result, JWT_SECRET_KEY, {
-        expiresIn: '10m',
+        expiresIn: '10000m',
       }),
     });
   } else {

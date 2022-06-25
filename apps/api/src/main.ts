@@ -1,9 +1,9 @@
 import * as express from 'express';
+import * as cors from 'cors';
+import { json } from 'body-parser';
 import { MongoClient } from 'mongodb';
 import { router as accountsRoute } from './app/routes/accounts';
 import { router as authRoute } from './app/routes/auth';
-import * as cors from 'cors';
-import { json } from 'body-parser';
 import { requireJwtToken } from './app/middlewares/jwt';
 
 MongoClient.connect('mongodb://accounts-pr_devcontainer_db_1')

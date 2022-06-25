@@ -4,17 +4,21 @@ import { NextFunction, Response, Request, Router } from 'express';
 
 export const router: Router = Router();
 
-router.get('/', async (req: Request, res: Response, next: NextFunction) => {
-  const accounts: IAccount[] = await getCollection<IAccount>(
-    req.app,
-    'accounts'
-  )
-    .find({
-      userId: 2,
-    })
-    .toArray();
-  res.json(accounts);
-});
+router.get(
+  '/:userId',
+  async (req: Request, res: Response, next: NextFunction) => {
+    const _id: number = Number(req.params.userId);
+    const accounts: IAccount[] = await getCollection<IAccount>(
+      req.app,
+      'accounts'
+    )
+      .find({
+        userId: _id,
+      })
+      .toArray();
+    res.json(accounts);
+  }
+);
 
 router.get('/:_id', async (req: Request, res: Response, next: NextFunction) => {
   const _id: number = Number(req.params._id);

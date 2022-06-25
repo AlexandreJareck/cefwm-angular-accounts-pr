@@ -11,7 +11,10 @@ export class AuthService {
   public auth(dados: {
     username: string;
     password: string;
-  }): Observable<{ token: string }> {
-    return this.httpClient.post<{ token: string }>('/api/auth', dados);
+  }): Observable<{ token: string; _id: number }> {
+    return this.httpClient.post<{ token: string; _id: number }>(
+      '/api/auth',
+      dados
+    );
   }
 }

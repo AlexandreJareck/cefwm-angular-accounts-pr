@@ -38,7 +38,7 @@ export class NewAccountComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(account: IAccount) {
-    account.userId = 2;
+    account.userId = Number(localStorage.getItem('userId'));
     account.createdAt = new Date().toString();
     this.newAccountService.post(account).subscribe();
   }

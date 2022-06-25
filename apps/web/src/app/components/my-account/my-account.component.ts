@@ -22,7 +22,6 @@ export class MyAccountComponent implements OnInit, OnDestroy {
   ) {}
 
   public newAccount(): void {
-    console.log('chegou');
     this.router.navigate(['../new-account'], {
       relativeTo: this.activatedRoute,
     });
@@ -38,7 +37,9 @@ export class MyAccountComponent implements OnInit, OnDestroy {
   }
 
   getMyAccounts(): void {
-    this.accountService.getAll().subscribe((accounts) => {
+    const userId = Number(localStorage.getItem('userId'));
+
+    this.accountService.getAll(userId).subscribe((accounts) => {
       this.accounts = accounts;
     });
   }
