@@ -25,6 +25,7 @@ app.get('/api', (req, res) => {
 });
 
 app.use('/api/auth', authRoute);
+app.use('/api/auth/new-user', authRoute);
 
 app.use(requireJwtToken);
 

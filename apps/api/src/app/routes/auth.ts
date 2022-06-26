@@ -24,4 +24,20 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   } else {
     res.status(401).send();
   }
+
+  router.post(
+    '/new-user/',
+    async (req: Request, res: Response, next: NextFunction) => {
+      const body: IUser = req.body;
+      console.log(body);
+      const result = await getCollection<IUser>(req.app, 'users').insertOne(
+        body
+      );
+      if (result) {
+        res.json(result);
+      } else {
+        res.status(400).send();
+      }
+    }
+  );
 });

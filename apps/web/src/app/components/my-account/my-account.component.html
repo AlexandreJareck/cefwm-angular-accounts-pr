@@ -1,19 +1,16 @@
-<!-- HeaderComponent -->
 <header style="background: #6847CC;">
   <div class="content-header">
     <button type="button" class="btn" (click)="newAccount()">
-      Nova transação
+      Nova conta
     </button>
     <button type="button" class="btn" (click)="logout()">
       Sair
     </button>
   </div>
 </header>
-<!-- Fim HeaderComponent -->
 
 <div class="container">
 
-  <!-- SummaryComponent -->
   <div class="summary">
     <div class="content">
       <header class="top">
@@ -37,9 +34,7 @@
       <strong>{{(accounts | calculate).total | currency: 'BRL'}}</strong>
     </div>
   </div>
-  <!-- Fim SummaryComponent -->
 
-  <!-- MyAccountComponent -->
   <div class="wrapper">
     <table>
       <thead>
@@ -60,6 +55,5 @@
       </tbody>
     </table>
   </div>
-  <!-- Fim MyAccountComponent -->
 
 </div>

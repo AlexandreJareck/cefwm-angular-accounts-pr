@@ -1,0 +1,6 @@
+<form class="container" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+  <h2>Cadastrar Usuário</h2>
+  <input type="text" placeholder="Login" formControlName="username">
+  <input type="password" placeholder="Senha" formControlName="password">
+  <button type="submit">Cadastrar</button>
+</form>

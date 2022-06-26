@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User as IUser } from '@cefwm-angular/common';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,5 +17,10 @@ export class AuthService {
       '/api/auth',
       dados
     );
+  }
+
+  public newUser(user: IUser): Observable<IUser> {
+    console.log(user)
+    return this.httpClient.post<IUser>('/api/auth/new-user/', user);
   }
 }
