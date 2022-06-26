@@ -1,9 +1,11 @@
 <!-- HeaderComponent -->
 <header style="background: #6847CC;">
   <div class="content-header">
-    <!-- <img src="../../../assets/logo.svg" /> -->
     <button type="button" class="btn" (click)="newAccount()">
       Nova transação
+    </button>
+    <button type="button" class="btn" (click)="logout()">
+      Sair
     </button>
   </div>
 </header>
@@ -53,7 +55,7 @@
           <td>{{account.title}}</td>
           <td [className]="account.type">{{account.amount | currency:'BRL'}}</td>
           <td>{{account.category}}</td>
-          <td>{{account.createdAt}}</td>
+          <td>{{account.createdAt | date:'short'}}</td>
         </tr>
       </tbody>
     </table>

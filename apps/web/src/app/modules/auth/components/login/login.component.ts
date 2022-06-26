@@ -32,31 +32,67 @@ export class LoginComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    if (!this.validationFormGroup()) {
+      return;
+    }
+    this.login();
+  }
+
+  private validationFormGroup(): boolean {
+    if (!this.formGroup.valid) {
+      this.messageToast(
+        'error',
+        'Campos obrigatórios não preenchido!',
+        'Todos os campos são obrigatórios!'
+      );
+      return false;
+    }
+
+    return true;
+  }
+
+  private messageToast(
+    severity: 'error' | 'success',
+    summary: string,
+    detail: string
+  ): void {
+    this.messageService.add({
+      severity,
+      summary,
+      detail,
+    });
+  }
+
+  private isLoginSucces(token: string, userId: string) {
+    this.messageToast(
+      'success',
+      'Login efetuado com sucesso!',
+      'Seja-bem vindo!'
+    );
+    this.router.navigate(['/']);
+    localStorage.setItem('token', token);
+    localStorage.setItem('userId', userId);
+  }
+
+  private isLoginError() {
+    this.messageToast('error', 'Login ou senha incorreto', 'Tente novamente');
+  }
+
+  private login() {
     this.authService
-      .auth(this.formGroup.value)
-      .pipe(
-        take(1),
-        catchError((err: HttpErrorResponse) => {
-          return of(undefined);
-        })
-      )
-      .subscribe((resultado: { token: string; _id: number } | undefined) => {
-        if (!resultado) {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Login ou senha incorreto',
-            detail: 'Tente novamente',
-          });
-        } else {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Login efetuado com sucesso!',
-            detail: 'Seja-bem vindo!',
-          });
-          this.router.navigate(['/']);
-          localStorage.setItem('token', resultado.token);
-          localStorage.setItem('userId', resultado._id.toString());
-        }
-      });
+    .auth(this.formGroup.value)
+    .pipe(
+      take(1),
+      catchError((err: HttpErrorResponse) => {
+        return of(undefined);
+      })
+    )
+    .subscribe((resultado: { token: string; _id: number } | undefined) => {
+      if (!resultado) {
+        this.isLoginError();
+      } else {
+        this.isLoginSucces(resultado.token, resultado._id.toString());
+      }
+    });
   }
 }

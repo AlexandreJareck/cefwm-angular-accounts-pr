@@ -43,4 +43,10 @@ export class MyAccountComponent implements OnInit, OnDestroy {
       this.accounts = accounts;
     });
   }
+
+  public logout(): void {
+    localStorage.setItem('token', '')
+    localStorage.setItem('userId', '')
+    this.router.navigate(['/login']);
+  }
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Account as IAccount } from '@cefwm-angular/common';
+import { Subject } from 'rxjs';
 import { NewAccountService } from '../../services/new-account.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'cefwm-angular-new-account',
@@ -29,7 +30,9 @@ export class NewAccountComponent implements OnInit, OnDestroy {
   });
 
   constructor(
+    private messageService: MessageService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private newAccountService: NewAccountService
   ) {}
 
@@ -38,13 +41,31 @@ export class NewAccountComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(account: IAccount) {
+    if (!this.validationFormGroup()) {
+      return;
+    }
     account.userId = Number(localStorage.getItem('userId'));
     account.createdAt = new Date().toString();
-    this.newAccountService.post(account).subscribe();
+    this.newAccountService.post(account).subscribe(() => {
+      this.router.navigate(['/account/my-accounts/']);
+    });
   }
 
   public setType(type: string): void {
     this.type.setValue(type);
+  }
+
+  private validationFormGroup(): boolean {
+    if (!this.formGroup.valid) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Campos obrigatórios não preenchido!',
+        detail: 'Todos os campos são obrigatórios!',
+      });
+      return false;
+    }
+
+    return true;
   }
 
   ngOnDestroy(): void {

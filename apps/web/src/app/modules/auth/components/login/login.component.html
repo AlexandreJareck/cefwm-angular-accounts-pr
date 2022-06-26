@@ -1,6 +1,10 @@
-<form class="container" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <h2>Login</h2>
-  <input type="text" placeholder="Login" formControlName="username">
-  <input type="password" placeholder="Senha" formControlName="password">
-  <button type="submit">Entrar</button>
-</form>
+<div class="container">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <h2>Login</h2>
+    <input type="text" placeholder="Login" formControlName="username">
+    <input type="password" placeholder="Senha" formControlName="password">
+    <button type="submit">Entrar</button>
+  </form>
+  <div class="flex">ou</div>
+  <div class="flex">Cadastre-se</div>
+</div>
