@@ -1,3 +1,5 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -36,9 +38,7 @@ export class NewAccountComponent implements OnInit, OnDestroy {
     private newAccountService: NewAccountService
   ) {}
 
-  ngOnInit(): void {
-    console.log('');
-  }
+  ngOnInit(): void {}
 
   public onSubmit(account: IAccount) {
     if (!this.validationFormGroup()) {

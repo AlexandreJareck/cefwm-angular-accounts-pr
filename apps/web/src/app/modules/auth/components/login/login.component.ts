@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -27,9 +29,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    console.log('');
-  }
+  ngOnInit(): void {}
 
   public onSubmit(): void {
     if (!this.validationFormGroup()) {
@@ -80,19 +80,19 @@ export class LoginComponent implements OnInit {
 
   private login() {
     this.authService
-    .auth(this.formGroup.value)
-    .pipe(
-      take(1),
-      catchError((err: HttpErrorResponse) => {
-        return of(undefined);
-      })
-    )
-    .subscribe((resultado: { token: string; _id: number } | undefined) => {
-      if (!resultado) {
-        this.isLoginError();
-      } else {
-        this.isLoginSucces(resultado.token, resultado._id.toString());
-      }
-    });
+      .auth(this.formGroup.value)
+      .pipe(
+        take(1),
+        catchError((err: HttpErrorResponse) => {
+          return of(undefined);
+        })
+      )
+      .subscribe((resultado: { token: string; _id: number } | undefined) => {
+        if (!resultado) {
+          this.isLoginError();
+        } else {
+          this.isLoginSucces(resultado.token, resultado._id.toString());
+        }
+      });
   }
 }
