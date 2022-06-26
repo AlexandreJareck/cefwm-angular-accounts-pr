@@ -9,7 +9,7 @@ db.accounts.insertMany([
     'amount': 1000,
     'category': 'work',
     'type': 'deposit',
-    'createdAt': '16/06/2022 22:00',
+    'createdAt': 'Sun Jun 26 2022 00:26:03 GMT-0300 (Horário Padrão de Brasília)',
     'userId': 2
   },
   {
@@ -18,7 +18,7 @@ db.accounts.insertMany([
     'amount': 100,
     'category': 'food',
     'type': 'withdraw',
-    'createdAt': '15/06/2022 20:00',
+    'createdAt': 'Sun Jun 26 2022 18:26:15 GMT-0300 (Horário Padrão de Brasília)',
     'userId': 2
   },
   {
@@ -27,7 +27,7 @@ db.accounts.insertMany([
     'amount': 300,
     'category': 'basics',
     'type': 'withdraw',
-    'createdAt': '14/06/2022 20:00',
+    'createdAt': 'Sun Jun 22 2022 10:26:20 GMT-0300 (Horário Padrão de Brasília)',
     'userId': 1
   },
   {
@@ -36,7 +36,7 @@ db.accounts.insertMany([
     'amount': 150,
     'category': 'work',
     'type': 'withdraw',
-    'createdAt': '10/06/2022 10:00',
+    'createdAt': 'Sun Jun 24 2022 14:26:30 GMT-0300 (Horário Padrão de Brasília)',
     'userId': 2
   }
 ])

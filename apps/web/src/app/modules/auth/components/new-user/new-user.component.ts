@@ -41,7 +41,7 @@ export class NewUserComponent implements OnInit, OnDestroy {
 
     this.authService.newUser(user).subscribe(() => {
       this.messageService.add({
-        severity: 'sucess',
+        severity: 'success',
         summary: 'Cadastro realizado!',
         detail:
           'Seu cadastro foi realizado, agora efetue o login para acessar o sistema!',
